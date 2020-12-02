@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :check_sign_in?, only: [:index, :edit, :show]
 
   def show
     @book = Book.find(params[:id])
@@ -23,6 +24,9 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    if @book.user.id != current_user.id
+      redirect_to books_path
+    end
   end
 
   def update
@@ -34,16 +38,16 @@ class BooksController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @book = Book.find(params[:id])
-    @book.destoy
+    @book.destroy
     redirect_to books_path
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title)
+    params.require(:book).permit(:title, :body)
   end
 
 end
