@@ -17,20 +17,22 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-header{
-	color:white;
-	.navbar-left{
-		span{
-			font-size:20px;
-			padding-top:10px;
-		}
-	}
+.fa, .fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 600;
+  line-height: normal;
 }
 
-.body{
-	margin-top:51px;
+#notice {
+  color: green;
 }
 
-header .navbar-left span {
-	display:inline-block;
+#error_explanation {
+  color: red;
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
 }
